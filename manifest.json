@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "description": "Extension to search the bookmarks and open it",
+  "name": "SBE",
+  "version": "1.0.0",
+  "author": "Rathod Veerender",
+  "browser_action": {
+    "default_title": "SBE",
+    "default_popup": "search.html",
+    "default_icon": "sbe.png"
+  },
+  "permissions": [
+    "activeTab",
+    "bookmarks",
+    "tabs"
+  ]
+}

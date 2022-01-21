@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Enter the bookmark name to search</title>
+    <link rel="stylesheet" href="search.css">
+</head>
+
+<body id="body">
+
+    <div id="searchBox">
+        <form>
+            <label><b>Search: </b></label>
+            <input type="text" id="bName">
+            <select id="searchByType">
+                <optgroup label="Bookmark search by"></optgroup>
+                <option value="link">Link</option>
+                <option value="title">Title</option>
+            </select>
+        </form>
+    </div>
+
+    <p id="result"></p>
+
+    <div id="myPopup" class="popup">
+
+        <!-- Modal content -->
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <form>
+                <p><b>Open link in:</b></p>
+                <menu>
+                    <button id="newTab"> New tab </button>
+                    <button id="newWindow"> New window </button>
+                </menu>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+<script src="search.js"></script>
+
+</html>
