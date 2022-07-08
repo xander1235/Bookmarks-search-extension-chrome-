@@ -18,6 +18,17 @@ chrome.bookmarks.getTree(function (itemTree) {
 
 var currUrl;
 
+function createAnchor(title, url) {
+    var a = document.createElement('a')
+    var text = document.createTextNode(title)
+    a.appendChild(text)
+    a.title = title
+    a.style.color = 'white'
+    a.style.textDecoration = 'none'
+    a.href = url
+    return a
+}
+
 function processNode(node) {
     if (node.children) {
         node.children.forEach(function (child) { processNode(child); });
@@ -27,17 +38,26 @@ function processNode(node) {
 }
 
 function startSearching() {
+    document.getElementById("result").innerHTML = ''
     var bookmarkType = e.options[e.selectedIndex].text;
     if (bookmarkName.value != '') {
 
         var results = [];
         if (bookmarkType.toString() == "Title") {
-            results = nodes.filter(n => n.title.toString().toLowerCase().includes(bookmarkName.value.toLowerCase())).map(n => '<a href = ' + n.url.toString() + '>' + n.title.toString() + '</a>')
+            results = nodes.filter(n => n.title.toString().toLowerCase().includes(bookmarkName.value.toLowerCase())).map(n => createAnchor(n.title.toString(), n.url.toString()) )
         } else {
-            results = nodes.filter(n => n.url.toString().toLowerCase().includes(bookmarkName.value.toLowerCase())).map(n => '<a href = ' + n.url.toString() + '>' + n.url.toString() + '</a>')
+            results = nodes.filter(n => n.url.toString().toLowerCase().includes(bookmarkName.value.toLowerCase())).map(n => createAnchor(n.url.toString(), n.url.toString()) )
         }
 
-        document.getElementById("result").innerHTML = results.join("<br></br>")
+        //document.getElementById("result").innerHTML = results.join("<br></br>")
+        var result = document.getElementById("result")
+
+        console.log(results)
+        results.forEach(n => {
+            result.appendChild(n)
+            result.appendChild(document.createElement('br'))
+            result.appendChild(document.createElement('br'))
+        })
 
         Array.from(document.getElementsByTagName("a")).forEach(anr => anr.addEventListener('click', function (e) {
             currUrl = this.attributes.href.nodeValue
