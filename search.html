@@ -8,15 +8,23 @@
 <body id="body">
 
     <div id="searchBox">
-        <form id="form-style">
-            <label style="color: FFFFFF; padding: 5px;"><b>Search: </b></label>
-            <input type="text" id="bName">
-            <select id="searchByType">
-                <optgroup label="Bookmark search by"></optgroup>
-                <option value="link">Link</option>
-                <option value="title">Title</option>
-            </select>
-        </form>
+        <div id="searchType">
+            <p style="color: white; padding: 5px; display: inline-block;"><b>Search: </b></p>
+            <p id="childType1">Data</p>
+            <p id="childType2">Bookmarks</p>
+        </div>
+        
+        
+        <div style="text-align: center; margin-bottom: 20px;">
+        	<form id="form-style">
+            	<input type="text" id="bName">
+            	<select id="searchByType">
+                	<optgroup label="Bookmark search by"></optgroup>
+                	<option value="link">Link</option>
+                	<option value="title">Title</option>
+            	</select>
+        	</form>
+    	</div>
     </div>
     <br></br>
 

@@ -5,8 +5,31 @@ var closeButton = document.getElementsByClassName("close")[0];  // Get the <span
 var newTab = document.getElementById("newTab");
 var newWindow = document.getElementById("newWindow");
 var e = document.getElementById("searchByType");
+var dataType = document.getElementById("childType1")
+var bookmarksType = document.getElementById("childType2")
 
 bookmarkName.addEventListener('input', startSearching);
+
+var searchType = 'Data'
+
+dataType.addEventListener('click', toggleSearchType);
+bookmarksType.addEventListener('click', toggleSearchType);
+
+function toggleSearchType(e) {
+    if (e.srcElement.innerHTML == 'Bookmarks') {
+        searchType = 'Bookmarks'
+        dataType.style.color = 'white'
+        dataType.style.backgroundColor = '#1B2430'
+        bookmarksType.style.color = 'black'
+        bookmarksType.style.backgroundColor = 'white'
+    } else {
+        searchType = 'Data'
+        bookmarksType.style.color = 'white'
+        bookmarksType.style.backgroundColor = '#1B2430'
+        dataType.style.color = 'black'
+        dataType.style.backgroundColor = 'white'
+    }
+}
 
 const nodes = []
 
@@ -38,6 +61,15 @@ function processNode(node) {
 }
 
 function startSearching() {
+    
+    if(searchType == 'Data') {
+        searchData()
+    } else {
+        searchBookmarks()
+    }
+}
+
+function searchBookmarks() {
     document.getElementById("result").innerHTML = ''
     var bookmarkType = e.options[e.selectedIndex].text;
     if (bookmarkName.value != '') {
@@ -69,6 +101,12 @@ function startSearching() {
 
     } else {
         document.getElementById("result").innerHTML = ''
+    }
+}
+
+function searchData() {
+    if(bookmarkName.value != '') {
+        console.log(chrome.storage.sync.get('[' + bookmarkName.value + ']'))
     }
 
 }
