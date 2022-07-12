@@ -23,6 +23,7 @@
                 	<option value="link">Link</option>
                 	<option value="title">Title</option>
             	</select>
+                <p id="addData" style="color: white;"> + </p>
         	</form>
     	</div>
     </div>
@@ -46,7 +47,24 @@
 
     </div>
 
+    <div id="addDataPopup" class="popup">
+
+        <!-- Modal content -->
+        <div class="data-popup-content">
+            <span class="data-close">&times;</span>
+            <form>
+                <p style="text-decoration-color: white; color: white;"><b>Open link in:</b></p>
+                <input type="text" id="keyName">
+                <input type="text" id="valueName">
+                <button id="submitData"> Save </button>
+            </form>
+        </div>
+
+    </div>
+
 </body>
-<script src="search.js"></script>
+<script type="module" src="./search.js"></script>
+<script type="module" src="./bookmarks.js"></script>
+<script type="module" src="./utils.js"></script>
 
 </html>
