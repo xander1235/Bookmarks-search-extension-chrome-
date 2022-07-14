@@ -1,7 +1,7 @@
 import { newTab, createAnchor, newWindow, popup, result } from "./utils.js";
 import {nodes} from "./process_data.js"
 
-function searchBookmarks(searchByType, bookmarkName) {
+export function searchBookmarks(searchByType, bookmarkName) {
     var bookmarkType = searchByType.options[searchByType.selectedIndex].text;
     if (bookmarkName.value != '') {
 
@@ -31,5 +31,3 @@ function searchBookmarks(searchByType, bookmarkName) {
         document.getElementById("result").innerHTML = ''
     }
 }
-
-export {searchBookmarks};

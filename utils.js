@@ -7,6 +7,10 @@ var dataType = document.getElementById("childType1")
 var bookmarksType = document.getElementById("childType2")
 export var dataPopup = document.getElementById("addDataPopup")
 export var addData = document.getElementById("addData")
+var closeDataButton = document.getElementsByClassName("data-close")[0];
+export var saveData = document.getElementById("submitData")
+export var dataKey = document.getElementById("keyName")
+export var dataValue = document.getElementById("valueName")
 
 var searchType = "Data"
 
@@ -95,6 +99,7 @@ export function dataModel(key) {
     value.style.display = 'none'
     value.style.marginLeft = '15px'
     value.style.color = "white"
+    value.style.transition = "all 2s linear"
     value.addEventListener('click', function() {
         navigator.clipboard.writeText(value.innerHTML)
     })
@@ -110,11 +115,54 @@ export function dataModel(key) {
                 value.innerHTML = res[key]
             }
         })
-        value.style.display = 'block'
+
+        // if (value.classList.contains('hidden')) {
+        //     value.classList.remove('hidden');
+        //     alert("Removing visually hidden" + value.classList)
+        //     setTimeout(function () {
+        //         value.classList.remove('visuallyhidden');
+        //     }, 20);
+        //   } else {
+        //     value.classList.add('visuallyhidden');    
+
+        //     value.addEventListener('transitionrun', function() {
+        //         alert('transitionrun fired');
+        //       });
+              
+        //       value.addEventListener('transitionstart', function() {
+        //         alert('transitionstart fired');
+        //       });
+              
+        //       value.addEventListener('transitioncancel', function() {
+        //         alert('transitioncancel fired');
+        //       });
+              
+        //       value.addEventListener('transitionend', function() {
+        //         alert("Adding hidden " + value.classList)
+        //         value.classList.add('hidden');
+        //       });
+
+
+
+
+
+
+        //     alert("Adding visually hidden " + value.classList)
+        //   }
+        if (value.style.display == 'block') {
+            value.style.display = "none"
+        } else  {
+            value.style.display = "block"
+        }
     })
 
     div.appendChild(keyTag)
     div.appendChild(value)
 
     return div
+}
+
+// When the user clicks on <span> (x), close the modal
+closeDataButton.onclick = function () {
+    dataPopup.style.display = "none";
 }
